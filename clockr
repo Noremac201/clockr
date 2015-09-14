@@ -7,7 +7,7 @@ import sys
 import time
 import argparse
 import signal
-
+import random
 
 
 def get_args():
@@ -69,7 +69,8 @@ def getcolor():
         "magenta"   : 5,
         "cyan"      : 6,
         "white"     : 7,
-        "orange"    : 9
+        "orange"    : 9,
+        "random"    : random.randint(1,255)
     }
 
     if color is not None and color.lower() in  colors.keys():
@@ -139,8 +140,8 @@ signal.signal(signal.SIGINT, gracefull_exit)
 signal.signal(signal.SIGTERM, gracefull_exit)
 
 a = 0
+getcolor()
 while True:
-    getcolor()
     width = screen.getmaxyx()[1]
     height = screen.getmaxyx()[0]
     origin_x = floor(width / 2) - 34
